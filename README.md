@@ -66,9 +66,9 @@ Route:
 
 ## Customizing the Network
 
-* \`\`\*\* vector\*\* in `main.cpp`: Contains the list of station names (1-based index). Update if new stations are added.
-* \`\`: Defines a bidirectional edge between station indices `x` and `y` with weight 1.
-* \`\`: Shortcut to connect consecutive indices from `start` to `end + 1`.
+* stations in `main.cpp`: Contains the list of station names (1-based index). Update if new stations are added.
+* edges : Defines a bidirectional edge between station indices `x` and `y` with weight 1.
+* connect_range: Shortcut to connect consecutive indices from `start` to `end + 1`.
 
 Simply modify or add these calls to reflect any changes in the metro network.
 
