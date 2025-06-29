@@ -1,68 +1,77 @@
-# Dijkstras-algorithm-HYDmetro
-***INTRODUCTION:***
-This C++ code implements real time use case of Dijkstras algorithm to find the shortest path from source to every destination.There are 56 metro stations in Hyderabad. Considering each station an integer value starting from 0 is assigned,when the user enters the source station Dijkstras algorithm is applied and least no of stations from the source to every other station is calculated and displayed.
+# Hyderabad Metro Shortest-Path Solver
 
-***COMPLEXITY:***
-The time complexity of Dijkstras algorithm is O(V^2),where V is the number of vertices in the graph.The space complexity of Dijkstras algorithm is O(V)
+A C++ command-line application to compute the shortest path (in terms of number of hops) between any two stations in the Hyderabad Metro network using Dijkstra’s algorithm.
 
-Please follow the link for the same project developed in java: https://github.com/ASMA-GIT/Hyderabad-Metro-DijkstraAlgo
+## Features
 
-# STATION CODES
-        Node number                                       Station Name
-        
-            0                                              LBnagar
-            1                                              Victoria_memorial
-            2                                              Chaitanyapuri
-            3                                              Dilshukhnagar
-            4                                              Moosrambagh
-            5                                              New Market
-            6                                              Malakpet
-            7                                              MG BusStation
-            8                                              Osmania_medical
-            9                                              GandhiBhavan
-            10                                             Assembly
-            11                                             Lakdikapool
-            12                                             Khairtabad
-            13                                             Irrummanzil
-            14                                             Panjagutta
-            15                                             Ameerpet
-            16                                             SRnagar
-            17                                             ESIhospital
-            18                                             Erragadda
-            20                                             Bharatnagar
-            21                                             Moosapet
-            22                                             DR_BRambedkar
-            23                                             Kukatpally
-            24                                             KPHBcolony
-            25                                             JNTUcollege
-            26                                             Miyapur
-            27                                             Sultanbazar
-            28                                             Narayanguda
-            29                                             Chikkadpali
-            30                                             RTCxroads
-            31                                             Musheerabad
-            32                                             Gandhihospital
-            33                                             SecundrabadWest
-            34                                             Paradeground
-            35                                             Nagole
-            36                                             Uppal
-            37                                             stadium
-            38                                             NGRI
-            39                                             Habsiguda
-            40                                             Tarnaka
-            41                                             Mettuguda
-            42                                             SecuderabadeEast
-            43                                             Paradise
-            44                                             Rasoolpura
-            45                                             PrakashNagar
-            46                                             Begumpet
-            47                                             MathuraNagar
-            48                                             Yusufguda
-            49                                             Jubliehills
-            50                                             JH-checkpost
-            51                                             Peddamagudi
-            52                                             Madhapur
-            53                                             Dugamcheruvu
-            54                                             Hitechcity
-            55                                             Raidurg
+* **Full Hyderabad Metro Coverage**: Models all current stations (Miyapur to Sultan Bazaar) and interchanges.
+* **Dijkstra’s Algorithm**: Efficiently computes shortest-hop routes using a min-heap (O(E log V)).
+* **User-Friendly I/O**: Lists stations with indices, accepts source and destination by exact station name, and prints both distance and route.
+* **Extensible**: Easily add or update station connections by editing `connect` and `connect_range` calls in `main.cpp`.
 
+## Prerequisites
+
+* **C++17** compiler (e.g., `g++`, `clang++`)
+* Standard C++ libraries
+
+## Building
+
+```bash
+# Compile the application
+g++ -std=c++17 -O2 main.cpp -o hyderabad_metro
+```
+
+## Usage
+
+1. Run the binary:
+
+   ```bash
+   ./hyderabad_metro
+   ```
+2. The program will list all stations with their indices.
+3. Enter the **source** station name exactly as displayed.
+4. Enter the **destination** station name exactly as displayed.
+5. The application outputs:
+
+   * The minimum number of hops between the two stations.
+   * The ordered list of stations along the shortest path.
+
+### Example
+
+```text
+Stations:
+  1: Miyapur
+  2: JNTU College
+  …
+ 56: Sultan Bazaar
+
+Enter source station name (exactly as shown): Miyapur
+Enter destination station name: Ameerpet
+
+Shortest hops from "Miyapur" to "Ameerpet": 10
+
+Route:
+  - Miyapur
+  - JNTU College
+  - KPHB Colony
+  - Kukatpally
+  - Dr. B.R. Ambedkar Balanagar
+  - Moosapet
+  - Bharat Nagar
+  - Erragadda
+  - ESI Hospital
+  - S.R. Nagar
+  - Ameerpet
+```
+
+## Customizing the Network
+
+* \`\`\*\* vector\*\* in `main.cpp`: Contains the list of station names (1-based index). Update if new stations are added.
+* \`\`: Defines a bidirectional edge between station indices `x` and `y` with weight 1.
+* \`\`: Shortcut to connect consecutive indices from `start` to `end + 1`.
+
+Simply modify or add these calls to reflect any changes in the metro network.
+
+## License
+
+This project is released under the MIT License. Feel free to reuse and adapt.
